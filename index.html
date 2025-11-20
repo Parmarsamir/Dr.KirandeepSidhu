@@ -12,7 +12,7 @@
   <!-- Animation Library (AOS) -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-  <!-- Fonts: Playfair Display (Serif for elegance) & Plus Jakarta Sans (Modern Sans) -->
+  <!-- Fonts: Playfair Display (Serif) & Plus Jakarta Sans (Sans) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -20,7 +20,7 @@
   <!-- Icon Library (Lucide) -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <!-- Custom Config for specific Doctor colors -->
+  <!-- Custom Config for Doctor colors -->
   <script>
     tailwind.config = {
       theme: {
@@ -37,7 +37,7 @@
               500: '#22c55e',
               700: '#15803d',
               800: '#166534',
-              900: '#0f3f25', // Deep Forest Green
+              900: '#0f3f25',
             },
             cream: '#fdfbf7',
             sand: '#f5f5f0'
@@ -48,28 +48,20 @@
   </script>
 
   <style>
-    /* Custom Styles */
     body { background-color: #fdfbf7; }
     .glass-nav {
       background: rgba(255, 255, 255, 0.8);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
     }
-    .blob-shape {
-      border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
-      transition: border-radius 5s ease-in-out infinite; 
-      animation: morph 8s ease-in-out infinite;
-    }
-    @keyframes morph {
-      0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-      50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
-      100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-    }
     .text-gradient {
       background: linear-gradient(to right, #166534, #15803d);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+    /* Loading Spinner Animation */
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .animate-spin { animation: spin 1s linear infinite; }
   </style>
 </head>
 <body class="text-slate-600 font-sans antialiased selection:bg-medical-100 selection:text-medical-900">
@@ -98,14 +90,13 @@
         <a href="#contact" class="hidden sm:inline-flex items-center gap-2 bg-medical-900 text-white px-5 py-2.5 rounded-full text-xs font-bold tracking-wide hover:bg-medical-800 transition shadow-md hover:shadow-xl transform hover:-translate-y-0.5">
           Book Appointment
         </a>
-        <!-- Mobile Menu Button -->
         <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-600 hover:text-medical-900">
           <i data-lucide="menu" class="w-6 h-6"></i>
         </button>
       </div>
     </div>
 
-    <!-- Mobile Menu Dropdown (Hidden by default) -->
+    <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden absolute top-20 left-4 right-4 glass-nav rounded-2xl p-6 shadow-2xl border border-slate-100 md:hidden flex-col gap-4 text-center transform origin-top">
       <a href="#about" class="py-2 hover:text-medical-800 font-medium">Philosophy</a>
       <a href="#care" class="py-2 hover:text-medical-800 font-medium">Process</a>
@@ -117,77 +108,50 @@
 
   <!-- Hero Section -->
   <section class="relative pt-32 pb-16 lg:pt-40 lg:pb-24 overflow-hidden">
-    <!-- Decorative BG elements -->
     <div class="absolute top-0 right-0 -z-10 w-[600px] h-[600px] bg-medical-100/50 rounded-full blur-3xl translate-x-1/3 -translate-y-1/4"></div>
     <div class="absolute bottom-0 left-0 -z-10 w-[400px] h-[400px] bg-orange-50 rounded-full blur-3xl -translate-x-1/4 translate-y-1/4"></div>
 
     <div class="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
-      
       <div data-aos="fade-up" data-aos-duration="1000">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-medical-100 shadow-sm mb-6">
           <span class="flex h-2 w-2 rounded-full bg-medical-500"></span>
           <span class="text-xs font-bold uppercase tracking-wider text-medical-800">Holistic Healing</span>
         </div>
-        
         <h1 class="text-5xl lg:text-6xl font-serif font-bold leading-[1.1] text-slate-900 mb-6">
           Gentle care for your <br>
           <span class="text-gradient">natural balance.</span>
         </h1>
-        
         <p class="text-lg text-slate-600 mb-8 leading-relaxed max-w-lg">
           Experience the profound healing of Classical Homoeopathy. We treat the root cause of your ailment, not just the symptoms, ensuring lasting health for you and your family.
         </p>
-        
         <div class="flex flex-wrap gap-4">
           <a href="#contact" class="inline-flex items-center justify-center gap-2 bg-medical-900 text-white px-8 py-3.5 rounded-full text-sm font-bold shadow-lg shadow-medical-900/20 hover:bg-medical-800 hover:shadow-xl transition-all transform hover:-translate-y-1">
-            Start Your Journey
-            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            Start Your Journey <i data-lucide="arrow-right" class="w-4 h-4"></i>
           </a>
           <a href="#conditions" class="inline-flex items-center justify-center gap-2 bg-white text-slate-700 border border-slate-200 px-8 py-3.5 rounded-full text-sm font-bold hover:bg-slate-50 hover:border-slate-300 transition-all">
             View Treatments
           </a>
         </div>
-
         <div class="mt-10 grid grid-cols-3 gap-4 border-t border-slate-200 pt-6">
-          <div>
-            <h3 class="text-2xl font-bold text-slate-900">10+</h3>
-            <p class="text-xs text-slate-500 uppercase tracking-wide">Years Exp.</p>
-          </div>
-          <div>
-            <h3 class="text-2xl font-bold text-slate-900">5k+</h3>
-            <p class="text-xs text-slate-500 uppercase tracking-wide">Patients</p>
-          </div>
-          <div>
-            <h3 class="text-2xl font-bold text-slate-900">100%</h3>
-            <p class="text-xs text-slate-500 uppercase tracking-wide">Natural</p>
-          </div>
+          <div><h3 class="text-2xl font-bold text-slate-900">10+</h3><p class="text-xs text-slate-500 uppercase tracking-wide">Years Exp.</p></div>
+          <div><h3 class="text-2xl font-bold text-slate-900">5k+</h3><p class="text-xs text-slate-500 uppercase tracking-wide">Patients</p></div>
+          <div><h3 class="text-2xl font-bold text-slate-900">100%</h3><p class="text-xs text-slate-500 uppercase tracking-wide">Natural</p></div>
         </div>
       </div>
 
       <div class="relative" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
         <div class="relative z-10 overflow-hidden rounded-[2.5rem] shadow-2xl shadow-slate-300 rotate-2 hover:rotate-0 transition duration-500">
           <img src="static/homo2.webp" alt="Homeopathy Remedies" class="w-full h-[500px] object-cover">
-          
-          <!-- Floating Badge -->
           <div class="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-white/50 flex items-center gap-4">
-            <div class="bg-green-100 p-3 rounded-full">
-              <i data-lucide="leaf" class="w-6 h-6 text-green-700"></i>
-            </div>
-            <div>
-              <p class="text-sm font-bold text-slate-900">Personalized Remedies</p>
-              <p class="text-xs text-slate-500">Tailored specifically for your constitution</p>
-            </div>
+            <div class="bg-green-100 p-3 rounded-full"><i data-lucide="leaf" class="w-6 h-6 text-green-700"></i></div>
+            <div><p class="text-sm font-bold text-slate-900">Personalized Remedies</p><p class="text-xs text-slate-500">Tailored specifically for your constitution</p></div>
           </div>
         </div>
-        
-        <!-- Decorative Patterns behind image -->
-        <div class="absolute -top-10 -right-10 w-32 h-32 bg-yellow-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-        <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-green-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
       </div>
     </div>
   </section>
 
-  <!-- About / Philosophy Section (Bento Grid Style) -->
+  <!-- About Section -->
   <section id="about" class="py-20 bg-white">
     <div class="max-w-6xl mx-auto px-4">
       <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
@@ -196,34 +160,24 @@
       </div>
 
       <div class="grid md:grid-cols-3 gap-6">
-        <!-- Card 1 -->
         <div class="md:col-span-2 bg-medical-50 rounded-3xl p-8 border border-medical-100 hover:shadow-lg transition group" data-aos="fade-up" data-aos-delay="100">
-          <div class="bg-white w-12 h-12 rounded-xl flex items-center justify-center shadow-sm mb-4 group-hover:scale-110 transition">
-            <i data-lucide="microscope" class="text-medical-800 w-6 h-6"></i>
-          </div>
+          <div class="bg-white w-12 h-12 rounded-xl flex items-center justify-center shadow-sm mb-4 group-hover:scale-110 transition"><i data-lucide="microscope" class="text-medical-800 w-6 h-6"></i></div>
           <h3 class="text-xl font-bold text-slate-900 mb-2">Root Cause Analysis</h3>
           <p class="text-slate-600 leading-relaxed">We don't just suppress symptoms. We take a detailed case history to understand the underlying cause of your illness—be it physical, emotional, or lifestyle-related.</p>
         </div>
 
-        <!-- Card 2 -->
         <div class="bg-cream rounded-3xl p-8 border border-stone-100 hover:shadow-lg transition group" data-aos="fade-up" data-aos-delay="200">
-          <div class="bg-white w-12 h-12 rounded-xl flex items-center justify-center shadow-sm mb-4 group-hover:scale-110 transition">
-            <i data-lucide="shield-check" class="text-orange-600 w-6 h-6"></i>
-          </div>
+          <div class="bg-white w-12 h-12 rounded-xl flex items-center justify-center shadow-sm mb-4 group-hover:scale-110 transition"><i data-lucide="shield-check" class="text-orange-600 w-6 h-6"></i></div>
           <h3 class="text-xl font-bold text-slate-900 mb-2">No Side Effects</h3>
           <p class="text-slate-600">Safe for newborns, pregnant women, and the elderly. Non-toxic and non-addictive.</p>
         </div>
 
-        <!-- Card 3 -->
         <div class="bg-cream rounded-3xl p-8 border border-stone-100 hover:shadow-lg transition group" data-aos="fade-up" data-aos-delay="300">
-          <div class="bg-white w-12 h-12 rounded-xl flex items-center justify-center shadow-sm mb-4 group-hover:scale-110 transition">
-            <i data-lucide="monitor-smartphone" class="text-blue-600 w-6 h-6"></i>
-          </div>
+          <div class="bg-white w-12 h-12 rounded-xl flex items-center justify-center shadow-sm mb-4 group-hover:scale-110 transition"><i data-lucide="monitor-smartphone" class="text-blue-600 w-6 h-6"></i></div>
           <h3 class="text-xl font-bold text-slate-900 mb-2">Teleconsultation</h3>
           <p class="text-slate-600">Quality care from the comfort of your home. Medicines delivered to your doorstep.</p>
         </div>
 
-        <!-- Card 4 -->
         <div class="md:col-span-2 bg-slate-900 rounded-3xl p-8 text-white hover:shadow-xl transition group relative overflow-hidden" data-aos="fade-up" data-aos-delay="400">
           <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div>
@@ -235,7 +189,6 @@
             </div>
             <a href="#contact" class="bg-white text-slate-900 px-6 py-3 rounded-full text-sm font-bold hover:bg-medical-100 transition">Check Availability</a>
           </div>
-          <!-- Abstract Circle -->
           <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/3"></div>
         </div>
       </div>
@@ -248,12 +201,8 @@
       <div class="text-center mb-12" data-aos="fade-up">
         <h2 class="text-3xl font-serif font-bold text-slate-900">Your Path to Healing</h2>
       </div>
-      
       <div class="grid md:grid-cols-3 gap-8 relative">
-        <!-- Connecting Line (Desktop) -->
         <div class="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-slate-200 -z-0"></div>
-
-        <!-- Step 1 -->
         <div class="relative z-10 text-center group" data-aos="fade-up" data-aos-delay="100">
           <div class="w-24 h-24 mx-auto bg-white rounded-full border-4 border-white shadow-lg flex items-center justify-center mb-6 group-hover:border-medical-200 transition duration-300">
             <span class="text-3xl font-serif font-bold text-medical-800">01</span>
@@ -261,8 +210,6 @@
           <h3 class="text-lg font-bold text-slate-900 mb-2">In-Depth Case Taking</h3>
           <p class="text-sm text-slate-600 px-4">We listen to your story. Your history, lifestyle, dreams, and fears are all clues to the remedy.</p>
         </div>
-
-        <!-- Step 2 -->
         <div class="relative z-10 text-center group" data-aos="fade-up" data-aos-delay="200">
           <div class="w-24 h-24 mx-auto bg-white rounded-full border-4 border-white shadow-lg flex items-center justify-center mb-6 group-hover:border-medical-200 transition duration-300">
             <span class="text-3xl font-serif font-bold text-medical-800">02</span>
@@ -270,8 +217,6 @@
           <h3 class="text-lg font-bold text-slate-900 mb-2">Analysis & Remedy</h3>
           <p class="text-sm text-slate-600 px-4">Dr. Sidhu carefully selects a single remedy that resonates with your specific constitution.</p>
         </div>
-
-        <!-- Step 3 -->
         <div class="relative z-10 text-center group" data-aos="fade-up" data-aos-delay="300">
           <div class="w-24 h-24 mx-auto bg-white rounded-full border-4 border-white shadow-lg flex items-center justify-center mb-6 group-hover:border-medical-200 transition duration-300">
             <span class="text-3xl font-serif font-bold text-medical-800">03</span>
@@ -290,7 +235,6 @@
         <div data-aos="fade-right">
           <h2 class="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-6">Conditions We Treat</h2>
           <p class="text-slate-600 mb-8 text-lg">Homoeopathy is effective for acute and chronic conditions by boosting the body's immune system. Common areas of success include:</p>
-          
           <div class="flex flex-wrap gap-3">
             <span class="px-4 py-2 rounded-full bg-medical-50 text-medical-800 border border-medical-100 text-sm font-medium">Allergic Rhinitis</span>
             <span class="px-4 py-2 rounded-full bg-medical-50 text-medical-800 border border-medical-100 text-sm font-medium">Asthma & Sinusitis</span>
@@ -301,28 +245,18 @@
             <span class="px-4 py-2 rounded-full bg-medical-50 text-medical-800 border border-medical-100 text-sm font-medium">Pediatric ailments</span>
             <span class="px-4 py-2 rounded-full bg-medical-50 text-medical-800 border border-medical-100 text-sm font-medium">Migraines</span>
           </div>
-          
           <div class="mt-8 p-4 bg-blue-50 border-l-4 border-blue-500 rounded-r-xl">
             <p class="text-sm text-blue-900 italic">"The highest ideal of cure is rapid, gentle and permanent restoration of the health." — Dr. Samuel Hahnemann</p>
           </div>
         </div>
-        
         <div class="grid grid-cols-2 gap-4" data-aos="fade-left">
            <div class="space-y-4 mt-8">
-             <div class="h-40 bg-slate-200 rounded-2xl overflow-hidden">
-               <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="w-full h-full object-cover hover:scale-110 transition duration-700" alt="Herbs">
-             </div>
-             <div class="h-56 bg-slate-200 rounded-2xl overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1624727828489-a1e03b79bba8?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="w-full h-full object-cover hover:scale-110 transition duration-700" alt="Mother and Child">
-             </div>
+             <div class="h-40 bg-slate-200 rounded-2xl overflow-hidden"><img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="w-full h-full object-cover hover:scale-110 transition duration-700" alt="Herbs"></div>
+             <div class="h-56 bg-slate-200 rounded-2xl overflow-hidden"><img src="https://images.unsplash.com/photo-1624727828489-a1e03b79bba8?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="w-full h-full object-cover hover:scale-110 transition duration-700" alt="Mother and Child"></div>
            </div>
            <div class="space-y-4">
-             <div class="h-56 bg-slate-200 rounded-2xl overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1544367563-12123d8965cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="w-full h-full object-cover hover:scale-110 transition duration-700" alt="Meditation">
-             </div>
-             <div class="h-40 bg-slate-200 rounded-2xl overflow-hidden">
-               <img src="https://images.unsplash.com/photo-1615486511484-92e172cc4fe0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="w-full h-full object-cover hover:scale-110 transition duration-700" alt="Vials">
-             </div>
+             <div class="h-56 bg-slate-200 rounded-2xl overflow-hidden"><img src="https://images.unsplash.com/photo-1544367563-12123d8965cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="w-full h-full object-cover hover:scale-110 transition duration-700" alt="Meditation"></div>
+             <div class="h-40 bg-slate-200 rounded-2xl overflow-hidden"><img src="https://images.unsplash.com/photo-1615486511484-92e172cc4fe0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="w-full h-full object-cover hover:scale-110 transition duration-700" alt="Vials"></div>
            </div>
         </div>
       </div>
@@ -341,11 +275,9 @@
             <div class="inline-block px-3 py-1 bg-medical-100 text-medical-800 text-xs font-bold rounded-full mb-3 w-fit">Lead Physician</div>
             <h2 class="text-3xl font-serif font-bold text-slate-900 mb-2">Dr. Kirandeep Kaur Sidhu</h2>
             <p class="text-slate-500 font-medium mb-6">B.H.M.S (Homoeopath)</p>
-            
             <p class="text-slate-600 leading-relaxed mb-6">
               Dr. Sidhu is a dedicated Homoeopathic Physician with a passion for holistic healing. Her approach combines traditional homoeopathic principles with modern diagnostic understanding. She believes in treating the person as a whole—mind, body, and spirit—to achieve sustainable health.
             </p>
-            
             <div class="flex items-start gap-4">
               <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
                 <p class="text-xs text-slate-500 font-bold uppercase">Location</p>
@@ -373,23 +305,17 @@
             <h2 class="text-3xl font-serif font-bold text-slate-900 mb-4">Get in Touch</h2>
             <p class="text-slate-600">Ready to start your healing journey? Book an appointment or visit our clinic.</p>
           </div>
-
           <div class="space-y-6">
             <div class="flex items-start gap-4">
-              <div class="bg-medical-50 p-3 rounded-lg text-medical-700">
-                <i data-lucide="map-pin" class="w-5 h-5"></i>
-              </div>
+              <div class="bg-medical-50 p-3 rounded-lg text-medical-700"><i data-lucide="map-pin" class="w-5 h-5"></i></div>
               <div>
                 <h4 class="font-bold text-slate-900">Clinic Address</h4>
                 <p class="text-sm text-slate-600 mt-1">Kiddie Ville clinic, Surya building,<br>Hill Road, Bandra West,<br>Mumbai 400050</p>
                 <a href="https://www.google.com/maps/search/?api=1&query=Kiddie+Ville+clinic,+Surya+building,+Hill+Road,+Bandra+West,+Mumbai+400050" target="_blank" class="text-xs font-bold text-medical-700 mt-2 hover:underline">Get Directions &rarr;</a>
               </div>
             </div>
-
             <div class="flex items-start gap-4">
-              <div class="bg-medical-50 p-3 rounded-lg text-medical-700">
-                <i data-lucide="phone" class="w-5 h-5"></i>
-              </div>
+              <div class="bg-medical-50 p-3 rounded-lg text-medical-700"><i data-lucide="phone" class="w-5 h-5"></i></div>
               <div>
                 <h4 class="font-bold text-slate-900">Contact</h4>
                 <p class="text-sm text-slate-600 mt-1">+91 99135 21891</p>
@@ -400,53 +326,69 @@
               </div>
             </div>
           </div>
-
           <!-- Small Map Preview -->
           <div class="rounded-2xl overflow-hidden shadow-md border border-slate-200 h-48">
-             <iframe 
-               class="w-full h-full"
-               frameborder="0" 
-               scrolling="no" 
-               marginheight="0" 
-               marginwidth="0" 
-               src="https://www.google.com/maps?q=Kiddie+Ville+clinic,+Surya+building,+Hill+Road,+Bandra+West,+Mumbai+400050&output=embed">
-             </iframe>
+             <iframe class="w-full h-full" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps?q=Kiddie+Ville+clinic,+Surya+building,+Hill+Road,+Bandra+West,+Mumbai+400050&output=embed"></iframe>
           </div>
         </div>
 
-        <!-- Right: Booking Form -->
+        <!-- Right: Booking Form (UPDATED WITH YOUR KEY) -->
         <div class="lg:col-span-3" data-aos="fade-up" data-aos-delay="100">
-          <form class="bg-white p-8 rounded-3xl shadow-xl border border-slate-100 relative overflow-hidden">
+          <div class="bg-white p-8 rounded-3xl shadow-xl border border-slate-100 relative overflow-hidden">
             <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-medical-500 to-medical-700"></div>
             
-            <h3 class="text-xl font-bold text-slate-900 mb-6">Request Appointment</h3>
-            
-            <div class="grid md:grid-cols-2 gap-6 mb-6">
-              <div class="space-y-2">
-                <label class="text-xs font-bold uppercase text-slate-500">Full Name</label>
-                <input type="text" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-medical-500 focus:ring-2 focus:ring-medical-200 outline-none transition" placeholder="John Doe">
+            <!-- Success Message (Hidden by default) -->
+            <div id="success-message" class="hidden text-center py-10">
+              <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i data-lucide="check" class="w-8 h-8 text-green-600"></i>
               </div>
-              <div class="space-y-2">
-                <label class="text-xs font-bold uppercase text-slate-500">Phone Number</label>
-                <input type="tel" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-medical-500 focus:ring-2 focus:ring-medical-200 outline-none transition" placeholder="+91 98765 43210">
+              <h3 class="text-2xl font-bold text-slate-900">Request Sent!</h3>
+              <p class="text-slate-600 mt-2">Dr. Sidhu has received your details.<br>We will contact you shortly.</p>
+              <button onclick="resetForm()" class="mt-6 text-sm font-bold text-medical-700 underline">Send another message</button>
+            </div>
+
+            <!-- The Form -->
+            <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+              <!-- YOUR KEY IS HERE -->
+              <input type="hidden" name="access_key" value="1d35bc50-d1bf-4056-bd77-4afff90fc4df">
+              <input type="hidden" name="subject" value="New Patient Inquiry - Harmony Homoeopathy">
+              <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+              <h3 class="text-xl font-bold text-slate-900 mb-6">Request Appointment</h3>
+              
+              <div class="grid md:grid-cols-2 gap-6 mb-6">
+                <div class="space-y-2">
+                  <label class="text-xs font-bold uppercase text-slate-500">Full Name</label>
+                  <input type="text" name="name" required class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-medical-500 focus:ring-2 focus:ring-medical-200 outline-none transition" placeholder="John Doe">
+                </div>
+                <div class="space-y-2">
+                  <label class="text-xs font-bold uppercase text-slate-500">Phone Number</label>
+                  <input type="tel" name="phone" required class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-medical-500 focus:ring-2 focus:ring-medical-200 outline-none transition" placeholder="+91 98765 43210">
+                </div>
               </div>
-            </div>
 
-            <div class="space-y-2 mb-6">
-              <label class="text-xs font-bold uppercase text-slate-500">Email Address</label>
-              <input type="email" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-medical-500 focus:ring-2 focus:ring-medical-200 outline-none transition" placeholder="john@example.com">
-            </div>
+              <div class="space-y-2 mb-6">
+                <label class="text-xs font-bold uppercase text-slate-500">Email Address</label>
+                <input type="email" name="email" required class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-medical-500 focus:ring-2 focus:ring-medical-200 outline-none transition" placeholder="john@example.com">
+              </div>
 
-            <div class="space-y-2 mb-6">
-              <label class="text-xs font-bold uppercase text-slate-500">Reason for visit</label>
-              <textarea rows="4" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-medical-500 focus:ring-2 focus:ring-medical-200 outline-none transition" placeholder="Briefly describe your symptoms..."></textarea>
-            </div>
+              <div class="space-y-2 mb-6">
+                <label class="text-xs font-bold uppercase text-slate-500">Reason for visit</label>
+                <textarea name="message" rows="4" required class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-medical-500 focus:ring-2 focus:ring-medical-200 outline-none transition" placeholder="Briefly describe your symptoms..."></textarea>
+              </div>
 
-            <button type="button" class="w-full py-4 bg-medical-900 text-white rounded-xl font-bold text-lg shadow-lg hover:bg-medical-800 hover:shadow-xl transition transform hover:-translate-y-0.5">
-              Submit Request
-            </button>
-            <p class="text-xs text-center text-slate-400 mt-4">We will confirm your appointment via Phone/WhatsApp.</p>
-          </form>
+              <button type="submit" id="submit-btn" class="w-full py-4 bg-medical-900 text-white rounded-xl font-bold text-lg shadow-lg hover:bg-medical-800 hover:shadow-xl transition transform hover:-translate-y-0.5 flex justify-center items-center gap-2">
+                <span>Submit Request</span>
+                <!-- Loading Spinner -->
+                <svg id="loading-spinner" class="animate-spin h-5 w-5 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+              </button>
+              <p id="error-message" class="text-xs text-center text-red-500 mt-4 hidden">Something went wrong. Please try again.</p>
+              <p class="text-xs text-center text-slate-400 mt-4">We will confirm your appointment via Phone/WhatsApp.</p>
+            </form>
+          </div>
         </div>
       </div>
     </div>
@@ -459,16 +401,13 @@
         <h3 class="text-2xl font-serif font-bold text-white mb-1">Harmony Homoeopathy</h3>
         <p class="text-sm opacity-80">Dr. Kirandeep Kaur Sidhu</p>
       </div>
-      
       <div class="flex gap-6 text-sm font-medium">
         <a href="#about" class="hover:text-white transition">About</a>
         <a href="#conditions" class="hover:text-white transition">Conditions</a>
         <a href="#contact" class="hover:text-white transition">Contact</a>
       </div>
-
       <div class="text-xs opacity-60 text-center md:text-right">
-        &copy; <span id="year"></span> All rights reserved.<br>
-        Designed for Wellness.
+        &copy; <span id="year"></span> All rights reserved.<br>Designed for Wellness.
       </div>
     </div>
   </footer>
@@ -480,11 +419,7 @@
     lucide.createIcons();
 
     // Initialize Animate On Scroll
-    AOS.init({
-      once: true,
-      offset: 50,
-      duration: 800,
-    });
+    AOS.init({ once: true, offset: 50, duration: 800 });
 
     // Set Year
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -492,19 +427,64 @@
     // Mobile Menu Toggle
     const btn = document.getElementById('mobile-menu-btn');
     const menu = document.getElementById('mobile-menu');
+    btn.addEventListener('click', () => { menu.classList.toggle('hidden'); menu.classList.toggle('flex'); });
+    menu.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => { menu.classList.add('hidden'); menu.classList.remove('flex'); }); });
 
-    btn.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
-      menu.classList.toggle('flex');
-    });
+    // --- CONTACT FORM LOGIC ---
+    const form = document.getElementById('contact-form');
+    const result = document.getElementById('success-message');
+    const submitBtn = document.getElementById('submit-btn');
+    const spinner = document.getElementById('loading-spinner');
+    const btnText = submitBtn.querySelector('span');
+    const errorMsg = document.getElementById('error-message');
 
-    // Close mobile menu when clicking a link
-    menu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        menu.classList.add('hidden');
-        menu.classList.remove('flex');
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const object = Object.fromEntries(formData);
+      const json = JSON.stringify(object);
+
+      // UI Loading State
+      btnText.textContent = 'Sending...';
+      spinner.classList.remove('hidden');
+      submitBtn.disabled = true;
+      submitBtn.classList.add('opacity-75');
+
+      fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: json
+      })
+      .then(async (response) => {
+          let json = await response.json();
+          if (response.status == 200) {
+              form.classList.add('hidden');
+              result.classList.remove('hidden');
+              lucide.createIcons(); // Re-render icons for success checkmark
+          } else {
+              console.log(response);
+              throw new Error(json.message);
+          }
+      })
+      .catch(error => {
+          console.log(error);
+          errorMsg.textContent = "Something went wrong. Please try again or call us directly.";
+          errorMsg.classList.remove('hidden');
+      })
+      .finally(() => {
+          btnText.textContent = 'Submit Request';
+          spinner.classList.add('hidden');
+          submitBtn.disabled = false;
+          submitBtn.classList.remove('opacity-75');
       });
     });
+
+    function resetForm() {
+      form.reset();
+      result.classList.add('hidden');
+      form.classList.remove('hidden');
+      errorMsg.classList.add('hidden');
+    }
   </script>
 </body>
 </html>
